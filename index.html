@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            background-image: url('https://img.freepik.com/free-photo/nature-shows-underwater-blooming-abstract-multi-color-generative-ai_188544-8595.jpg?size=626&ext=jpg&ga=GA1.1.1004833464.1698231981&semt=ais');
+            background-size: cover;
+        }
+        .registration-container {
+            background-color:rgba(255, 252, 252, 0.8 );
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container registration-container m-auto col-md-8 col-lg-6 col-xl-4   border border-dark">
+    <h2 class="text-center mb-4">Registration Form</h2>
+    <form id="registrationForm" novalidate>
+        <!-- Name Section -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
+                <div class="invalid-feedback">Please enter your first name.</div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
+                <div class="invalid-feedback">Please enter your last name.</div>
+            </div>
+        </div>
+
+        <!-- Date of Birth Section -->
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" class="form-control" required>
+            <div class="invalid-feedback">Please enter your date of birth.</div>
+        </div>
+
+        <!-- Email and Password Section (unchanged) -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+            <div class="invalid-feedback">Please enter a password.</div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+            <div class="invalid-feedback">Passwords do not match.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        this.classList.add('was-validated');
+
+        // Check if passwords match
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (password !== confirmPassword) {
+            document.getElementById('confirmPassword').setCustomValidity('Passwords do not match');
+        } else {
+            document.getElementById('confirmPassword').setCustomValidity('');
+        }
+    });
+</script>
+
+</body>
+</html>
+
